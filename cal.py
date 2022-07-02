@@ -7,6 +7,9 @@ import colorama
 from colorama import Fore, Back, Style
 
 
+def print_blank_line(char=' ', count=1):
+    print(char * count)
+
 def draw_calendar(date: datetime.datetime):
     month: str = date.strftime("%B %Y")
     time: str = date.strftime("%H:%M")
@@ -22,7 +25,7 @@ def draw_calendar(date: datetime.datetime):
     print(month_blank_step + month + month_blank_step)
     print(time_blank_step + time + time_blank_step)
     [print(f'{week_day} ', end='') for week_day in week_days_header]
-    print('')
+    print_blank_line()
 
     print(' ' * (3 * month_first_week_day_index), end='')
 
@@ -37,12 +40,12 @@ def draw_calendar(date: datetime.datetime):
             print(f' {date_number}', end=' ')
     else:
         last_date_number_in_first_line = date_number
-        print('')
+        print_blank_line()
 
     #print other date numbers line
     for week_day_index, date_number in enumerate(range(last_date_number_in_first_line + 1, month_count_days + 1)):
         if week_day_index % 7 == 0 and week_day_index != 0:
-            print('')
+            print_blank_line()
         print(f' {date_number} ' if len(str(date_number)) == 1 else f'{date_number} ', end='')
 
 def main():
