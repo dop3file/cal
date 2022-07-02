@@ -8,14 +8,18 @@ from colorama import Fore, Back, Style
 
 def draw_calendar(date: datetime.datetime):
 	month: str = date.strftime("%B %Y")
+	time: str = date.strftime("%H:%M")
 	week_days_header = ['Su','Mo','Tu','We','Th','Fr','Sa']
 	month_count_days: int = monthrange(date.year, int(date.strftime("%m")))[1]
 	month_first_week_day_index: int = week_days_header.index(datetime.datetime(date.year, date.month, 1).strftime('%a')[:2])
 	today_number_day = int(date.strftime('%d'))
 
-	blank_step: str = int((len(' '.join(week_days_header)) - len(month)) / 2) * ' '
 
-	print(blank_step + month + blank_step)
+	month_blank_step: str = int((len(' '.join(week_days_header)) - len(month)) / 2) * ' '
+	time_blank_step: str = int((len(' '.join(week_days_header)) - len(time)) / 2) * ' '
+
+	print(month_blank_step + month + month_blank_step)
+	print(time_blank_step + time + time_blank_step)
 	[print(f'{week_day} ', end='') for week_day in week_days_header]
 	print('')
 
