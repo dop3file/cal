@@ -1,6 +1,7 @@
+from calendar import monthrange
+
 import pytz
 import datetime
-from calendar import monthrange
 
 import colorama
 from colorama import Fore, Back, Style
